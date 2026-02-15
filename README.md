@@ -497,7 +497,7 @@ Working with teams using private registries, I saw frustration with complex ente
 
 - 💼 LinkedIn: https://www.linkedin.com/in/ybmsreddy/ 
 - 📺 YouTube: [Docker Registry UI Tutorials](https://www.youtube.com/@MadhuSudhanReddyYB)
-- 📧 Email: ybmadhu404@gmail.com
+
 
 
 **"The best way to learn is to build, and the best way to grow is to share."**
