@@ -523,7 +523,7 @@ MIT License - see LICENSE file
 ## 📺 Video Tutorial
 
 Watch the complete tutorial:
-[![Tutorial](https://www.youtube.com/@MadhuSudhanReddyYB)
+[Tutorial](https://www.youtube.com/@MadhuSudhanReddyYB)
 
 ---
 
