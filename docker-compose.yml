@@ -1,0 +1,58 @@
+version: '3.8'
+
+# Project name - ensures consistent volume naming
+# This prevents volume name from changing based on directory name
+name: registry-ui
+
+services:
+  registry:
+    image: registry:2
+    container_name: docker-registry
+    restart: always
+    ports:
+      - "5000:5000"
+    environment:
+      REGISTRY_STORAGE_DELETE_ENABLED: "true"
+    volumes:
+      - registry-data:/var/lib/registry
+      - ./config/registry-config.yml:/etc/docker/registry/config.yml
+    networks:
+      - registry-network
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: registry-backend
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      REGISTRY_URL: http://registry:5000
+    depends_on:
+      - registry
+    networks:
+      - registry-network
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: registry-frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - registry-network
+
+volumes:
+  registry-data:
+    driver: local
+    # Fixed volume name: registry-ui_registry-data
+    # Data persists even if you change directory names
+
+networks:
+  registry-network:
+    driver: bridge
